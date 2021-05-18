@@ -5,7 +5,6 @@ import com.google.gson.GsonBuilder;
 import com.martynasvq.restlibrary.mappers.BookMapper;
 import com.martynasvq.restlibrary.model.Book;
 import com.martynasvq.restlibrary.model.BookDto;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.FileWriter;
@@ -111,8 +110,9 @@ public class BookServiceImpl implements BookService {
         if(localDate.isBefore(until) || until.isBefore(LocalDate.now())) {
             return null;
         }
-        if(!lendingService.canBorrowMore(personName))
+        if(!lendingService.canBorrowMore(personName)) {
             return null;
+        }
 
         lendingService.borrow(uuid, personName);
         book.setAvailable(false);

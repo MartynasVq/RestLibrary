@@ -4,7 +4,7 @@ import com.martynasvq.restlibrary.model.Book;
 import com.martynasvq.restlibrary.model.BookDto;
 import org.mapstruct.Mapper;
 
-@Mapper
+
 public interface BookMapper {
 
     BookDto BookToBookDto(Book book);
